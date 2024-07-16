@@ -41,11 +41,16 @@ config :brbackend, BrbackendWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
+
+if Mix.env() == :dev do
+  Dotenv.load()
+end
+
 config :brbackend, Brbackend.Adapter.Repo,
-  username: "postgres",
-  password: "littleproblem",
-  database: "website",
-  hostname: "localhost",
+  username: System.get_env("DATABASE_USERNAME"),
+  password: System.get_env("DATABASE_PASSWORD"),
+  database: System.get_env("DATABASE_NAME"),
+  hostname: System.get_env("DATABASE_HOST"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

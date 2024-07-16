@@ -10,4 +10,6 @@ defmodule BrbackendWeb.ErrorJSONTest do
              %{errors: %{detail: "Internal Server Error"}}
   end
 
+
+
 end

@@ -1,6 +1,10 @@
 defmodule BrbackendWeb.Router do
   use BrbackendWeb, :router
 
+  pipeline :rate_limited do
+    plug BrbackendWeb.RateLimit
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end

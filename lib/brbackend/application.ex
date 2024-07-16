@@ -1,3 +1,7 @@
+if Mix.env() == :dev do
+  Dotenv.load()
+end
+
 defmodule Brbackend.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
@@ -17,7 +21,8 @@ defmodule Brbackend.Application do
       # Start a worker by calling: Brbackend.Worker.start_link(arg)
       # {Brbackend.Worker, arg},
       # Start to serve requests, typically the last entry
-      BrbackendWeb.Endpoint
+      BrbackendWeb.Endpoint,
+      {Redix, name: :redix, host: System.get_env("REDIS_HOST"), port: String.to_integer(System.get_env("REDIS_PORT")), password: System.get_env("REDIS_PASSWORD")}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

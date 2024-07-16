@@ -52,7 +52,10 @@ defmodule Brbackend.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:ecto_sql, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:redix, "~> 1.1"},
+      {:poolboy, "~> 1.5"},
+      {:dotenv, "~> 3.0.0"}
     ]
   end
 

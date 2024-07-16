@@ -1,6 +1,9 @@
 defmodule BrbackendWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :brbackend
 
+  # Rate limit
+  plug BrbackendWeb.RateLimit
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -14,6 +17,10 @@ defmodule BrbackendWeb.Endpoint do
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
+
+  socket "/socket", BrbackendWeb.UserSocket,
+    websocket: true,
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #

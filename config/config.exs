@@ -7,6 +7,11 @@
 # General application configuration
 import Config
 
+config :brbackend, Brbackend.Redix,
+  host: "redis-16525.c14.us-east-1-3.ec2.redns.redis-cloud.com",
+  port: 16525,
+  password: "VAnBicswGHW5CfIZmigg6VQsfGPmBn2E"
+
 config :brbackend,
   generators: [timestamp_type: :utc_datetime],
   ecto_repos: [Brbackend.Adapter.Repo]
